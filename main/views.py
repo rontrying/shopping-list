@@ -36,6 +36,8 @@ def create_product(request):
      product.user = request.user
      product.save()
      return HttpResponseRedirect(reverse('main:show_main'))
+ context = {'form':form}
+ return render(request, "create_product.html",context)
 
 
 def show_xml(request):
