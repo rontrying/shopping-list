@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<nav class="navbar navbar-expand-lg bg-body-tertiary"  data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">{{name}}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <button class="btn btn-outline-success"><a class="nav-link active" aria-current="page" href="{% url 'main:logout' %}">logout</a></button>
+    </div>
+  </nav>
     <h1>Shopping List Page</h1>
 
     <h5>Name:</h5>
@@ -25,6 +34,18 @@
             <td>{{product.price}}</td>
             <td>{{product.description}}</td>
             <td>{{product.date_added}}</td>
+            <td>
+                <a href="{% url 'main:edit_product' product.pk %}">
+                    <button>
+                        Edit
+                    </button>
+                </a>
+                <a href="{% url 'main:delete_product' product.pk %}">
+                    <button>
+                        Delete
+                    </button>
+                </a>
+            </td>
         </tr>
     {% endfor %}
 </table>
